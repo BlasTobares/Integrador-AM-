@@ -154,58 +154,8 @@ app.get("/medicos/agenda", (req, res) => {
     );
 });
 
-/*
-app.get("/medicos/agenda", (req, res) => {
-    const id_medico = req.query.id_medico; // Obtenemos el id_medico desde la URL
+const port = process.env.PORT || 3000;
 
-    if (!id_medico) {
-        return res.status(400).send("No se proporcionó el ID del médico.");
-    }
-
-    const fechaHoy = new Date().toISOString().split('T')[0]; // Fecha actual en formato YYYY-MM-DD
-console.log("Fecha de hoy: ", fechaHoy); // Verificar la fecha de hoy
-
-conn.query(
-    `SELECT t.id_turno, t.fecha, t.hora, p.nombre AS paciente_nombre, p.apellido AS paciente_apellido, t.motivo_consulta
-    FROM turnos t
-    JOIN pacientes p ON t.id_paciente = p.id_paciente
-    WHERE t.id_medico = ? AND DATE(t.fecha) = ?`,
-    [id_medico, fechaHoy],
-    (error, result) => {
-        if (error) {
-            console.error("Error al consultar la agenda del médico:", error);
-            return res.status(500).send("No se pudo consultar la agenda.");
-        }
-
-        console.log("Turnos encontrados:", result); // Ver los turnos encontrados
-        res.render("medicos/agenda", { turnos: result });
-    }
-);
-});
-*/
-/*app.post("/medicos/guardarEvolucion", (req, res) => {
-    const { id_paciente, id_medico, fecha, contenido } = req.body;
-
-    if (!id_paciente || !id_medico || !fecha || !contenido) {
-        return res.status(400).send("Faltan datos en el formulario.");
-    }
-
-    // Insertar la evolución en la base de datos
-    conn.query(
-        'INSERT INTO evoluciones (id_turno, id_medico, fecha, contenido) VALUES (?, ?, ?, ?)',
-        [id_paciente, id_medico, fecha, contenido],
-        (error, result) => {
-            if (error) {
-                console.error("Error al guardar la evolución:", error);
-                return res.status(500).send("No se pudo guardar la evolución.");
-            }
-
-            res.redirect(`/medicos/pacientes?id_medico=${id_medico}`);
-        }
-    );
-});
-*/
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log("Servidor corriendo en el puerto 3000");
-
 })
