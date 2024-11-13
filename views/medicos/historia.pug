@@ -1,0 +1,31 @@
+extends ../layout.pug
+
+block contenido
+    h2 Historia Clínica del Paciente #{historiaClinica.id_paciente}
+    
+    table(class="table")
+        tr
+            th Alergias
+            td= historiaClinica.alergias || "No registradas"
+        tr
+            th Antecedentes Patológicos
+            td= historiaClinica.antecedentes_patologicos || "No registrados"
+        tr
+            th Hábitos
+            td= historiaClinica.habitos || "No registrados"
+        tr
+            th Medicamentos
+            td= historiaClinica.medicamentos || "No registrados"
+
+    .footer                
+            .div.redes
+                a(href="#")
+                    i(class="fa-solid fa-user-doctor")
+                a(href="#")
+                    i(class="fa-solid fa-hospital")
+                a(href="#")
+                    i(class="fa-solid fa-truck-medical")
+                    
+
+            .div.creditos
+                h4 Proyecto Atención Medica © | Diseño & Programación: Tobares Blas.

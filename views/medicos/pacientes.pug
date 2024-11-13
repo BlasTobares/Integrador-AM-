@@ -1,0 +1,42 @@
+extends ../layout.pug
+
+block contenido
+    h3 Pacientes:
+    table(class="table table-striped")
+        thead
+            tr
+                th Id Paciente
+                th Nombre
+                th Apellido
+                th Fecha de Turno
+                th Hora
+                th Motivo de Consulta
+        tbody
+            each paciente in pacientes
+                tr
+                    td= paciente.id_paciente
+                    td= paciente.nombre
+                    td= paciente.apellido
+                    td
+                        script.
+                            var fecha = new Date("#{paciente.fecha}");
+                            var formatoFecha = fecha.getDate().toString().padStart(2, "0") + "/" + (fecha.getMonth() + 1).toString().padStart(2, "0") + "/" + fecha.getFullYear();
+                            document.write(formatoFecha);
+                    td= paciente.hora
+                    td= paciente.motivo_consulta
+                    td
+                        a(href=`/medicos/historia?id_paciente=${paciente.id_paciente}` class="btn btn-info") Ver Historia Clínica
+                        a(href=`/medicos/cargarevolucion?id_paciente=${paciente.id_paciente}` class="btn btn-success") Cargar Evolución
+
+        .footer                
+            .div.redes
+                a(href="#")
+                    i(class="fa-solid fa-user-doctor")
+                a(href="#")
+                    i(class="fa-solid fa-hospital")
+                a(href="#")
+                    i(class="fa-solid fa-truck-medical")
+                    
+
+            .div.creditos
+                h4 Proyecto Atención Medica © | Diseño & Programación: Tobares Blas.

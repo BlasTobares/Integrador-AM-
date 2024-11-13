@@ -1,0 +1,34 @@
+extends ../layout.pug
+
+block contenido
+    h2 Cargar Evolución del Paciente #{id_paciente}
+
+    form(action="/medicos/guardarEvolucion" method="POST")
+        input(type="hidden" name="id_paciente" value=id_paciente)
+        
+        .mb-3
+            label(for="id_medico") Médico
+            input(type="text" name="id_medico" id="id_medico" class="form-control" placeholder="Ingrese el Id del Médico" required)
+
+        .mb-3
+            label(for="fecha") Fecha
+            input(type="datetime-local" name="fecha" id="fecha" class="form-control" required)
+
+        .mb-3
+            label(for="contenido") Contenido
+            textarea(name="contenido" id="contenido" class="form-control" rows="4" placeholder="Ingrese la evolución del paciente" required)
+
+        button(type="submit" class="btn btn-primary") Cargar Evolución
+
+        .footer                
+            .div.redes
+                a(href="#")
+                    i(class="fa-solid fa-user-doctor")
+                a(href="#")
+                    i(class="fa-solid fa-hospital")
+                a(href="#")
+                    i(class="fa-solid fa-truck-medical")
+                    
+
+            .div.creditos
+                h4 Proyecto Atención Medica © | Diseño & Programación: Tobares Blas.

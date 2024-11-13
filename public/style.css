@@ -1,0 +1,89 @@
+h1, h2, h3 {
+    text-align: center;
+    background-color: whitesmoke;
+    color: gray; /* Un color elegante para los títulos */
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+body {
+    background-color: #90b9cc; /* Color suave y profesional */
+}
+
+.table {
+    width: 100%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave alrededor de la tabla */
+}
+
+.table th, .table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+
+.table th {
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    background-color: #989ea3;
+}
+
+tr.inactivo {
+    color: red;
+    text-decoration: line-through;
+}
+
+body {
+    margin: 0;
+    padding-bottom: 80px;
+}
+
+.contenido {
+    padding-bottom: 60px; 
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 20px;
+}
+
+.div.redes {
+    margin-top: 10px;
+}
+
+.div.creditos {
+    margin-top: 10px;
+}
+
+
+.div.redes {
+    display: flex;
+    justify-content: center; /* Centra los íconos horizontalmente */
+    gap: 40px; /* Espacio entre los íconos */
+    margin-top: 20px;
+}
+
+.div.redes a {
+    font-size: 40px; /* Tamaño de los íconos */
+    color: gray; /* Color gris para los íconos */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+}
+
+.div.redes a:hover {
+    color: #007bff; /* Color de los íconos cuando se pasa el ratón (puedes cambiarlo) */
+}
+
+/* Estilos para los créditos */
+.div.creditos {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #6c757d;
+}

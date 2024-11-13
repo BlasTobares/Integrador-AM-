@@ -1,0 +1,29 @@
+extends ../layout.pug
+
+block contenido
+    h1 Agenda del medico para el día de hoy
+    table(class="table table-striped")
+        thead
+            tr
+                th Hora
+                th Paciente
+                th Motivo de consulta
+        tbody
+            each turno in turnos
+                tr
+                    td= turno.hora
+                    td= turno.paciente_nombre + " " + turno.paciente_apellido
+                    td= turno.motivo_consulta
+
+    .footer                
+            .div.redes
+                a(href="#")
+                    i(class="fa-solid fa-user-doctor")
+                a(href="#")
+                    i(class="fa-solid fa-hospital")
+                a(href="#")
+                    i(class="fa-solid fa-truck-medical")
+                    
+
+            .div.creditos
+                h4 Proyecto Atención Medica © | Diseño & Programación: Tobares Blas.

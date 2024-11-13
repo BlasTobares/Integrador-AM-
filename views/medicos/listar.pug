@@ -1,0 +1,38 @@
+extends ../layout.pug
+block contenido
+    h1 Bienvenido al sistema de nuestro hospital
+    h3 Medicos:
+    table(class= "table table-striped") 
+        thead 
+            tr 
+                th Id 
+                th Nombre 
+                th Apellido 
+                th Especialidad
+                th Mail
+                th Activo   
+        tbody
+            each medico in medicos 
+                tr(class = (medico.estado == 1)? 'activo' : 'inactivo') 
+                    td= medico.id_medico 
+                    td= medico.nombre
+                    td= medico.apellido 
+                    td= medico.especialidad 
+                    td= medico.mail 
+                    td= (medico.estado == 1) ? 'Activo': 'Inactivo'
+                    td 
+                        a(href=`/medicos/agenda?id_medico=${medico.id_medico}` class="btn btn-info") Ver agenda 
+                        a(href=`/medicos/pacientes?id_medico=${medico.id_medico}` class="btn btn-success") Ver pacientes
+
+        .footer                
+            .div.redes
+                a(href="#")
+                    i(class="fa-solid fa-user-doctor")
+                a(href="#")
+                    i(class="fa-solid fa-hospital")
+                a(href="#")
+                    i(class="fa-solid fa-truck-medical")
+                    
+
+            .div.creditos
+                h4 Proyecto Atención Medica © | Diseño & Programación: Tobares Blas.
