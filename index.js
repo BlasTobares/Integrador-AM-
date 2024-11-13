@@ -102,6 +102,7 @@ app.get("/medicos/cargarevolucion", (req, res) => {
     res.render("medicos/cargarEvolucion", { id_paciente: idPaciente });
 });
 
+/*
 // Ruta para guardar la evolución en la base de datos
 app.post("/medicos/guardarEvolucion", (req, res) => {
     console.log(req.body);  // Agrega esta línea para ver los datos recibidos
@@ -115,6 +116,30 @@ app.post("/medicos/guardarEvolucion", (req, res) => {
     conn.query(
         'INSERT INTO evoluciones (id_turno, id_medico, fecha, contenido) VALUES (?, ?, ?, ?)',
         [id_paciente, id_medico, fecha, contenido],
+        (error, result) => {
+            if (error) {
+                console.error("Error al guardar la evolución:", error);
+                return res.status(500).send("No se pudo guardar la evolución.");
+            }
+
+            res.redirect(`/medicos/pacientes?id_medico=${id_medico}`);
+        }
+    );
+});
+*/
+
+app.post("/medicos/guardarEvolucion", (req, res) => {
+    console.log(req.body);  // Para ver los datos recibidos
+    const { id_turno, id_medico, fecha, contenido } = req.body; // Cambiar 'id_paciente' por 'id_turno'
+
+    if (!id_turno || !id_medico || !fecha || !contenido) {
+        return res.status(400).send("Faltan datos en el formulario.");
+    }
+
+    // Insertar la evolución en la base de datos
+    conn.query(
+        'INSERT INTO evoluciones (id_turno, id_medico, fecha, contenido) VALUES (?, ?, ?, ?)', // Cambiar 'id_paciente' por 'id_turno'
+        [id_turno, id_medico, fecha, contenido],  // Cambiar 'id_paciente' por 'id_turno'
         (error, result) => {
             if (error) {
                 console.error("Error al guardar la evolución:", error);

@@ -4,7 +4,7 @@ block contenido
     h2 Cargar Evolución del Paciente #{id_paciente}
 
     form(action="/medicos/guardarEvolucion" method="POST")
-        input(type="hidden" name="id_paciente" value=id_paciente)
+         input(type="hidden" name="id_turno" value=id_turno)
         
         .mb-3
             label(for="id_medico") Médico
