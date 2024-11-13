@@ -2,6 +2,8 @@ const express = require("express");
 const pug = require("pug");
 const mysql = require("mysql2");
 
+require('dotenv').config()
+
 const app = express();
 
 // Para manejar formularios con datos de tipo URL-encoded
@@ -10,13 +12,21 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const conn = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
+});
+
+/*
+const conn = mysql.createConnection({
     port: 3306,
     host: 'localhost',
     user: 'root',
     password: '',        
     database: 'atenciónmedica'
 })
-
+*/
 app.set("view engine", "pug");
 app.set("views", "views");
 
